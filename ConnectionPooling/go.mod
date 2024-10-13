@@ -1,4 +1,4 @@
-module github.com/arpit-ayeee/personal/db-connection-pooling
+module github.com/arpit-ayeee/SystemPrototypes/ConnectionPool
 
 go 1.22.0
 

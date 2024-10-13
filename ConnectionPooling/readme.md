@@ -1,4 +1,5 @@
 MySQL Connection Pool Benchmarking in Go
+
 This Go program demonstrates the implementation and benchmarking of a MySQL connection pool compared to a non-pool solution. The benchmarks simulate database operations with varying numbers of concurrent threads, measuring the time taken for both scenarios (with and without a connection pool).
 
 Features
