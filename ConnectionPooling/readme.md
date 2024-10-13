@@ -66,47 +66,46 @@ Pool time for 300 threads: 2.8s
 
 
 Explanation
-Imports
-"database/sql": Provides SQL database access.
-"fmt": Used for formatted I/O operations.
-"sync": Provides concurrency features like wait groups and mutexes.
-"time": Used for benchmarking.
-"_ github.com/go-sql-driver/mysql": The MySQL driver is imported for database operations.
-Connection Pool Interface and Structure
-ConnectionPool interface: Defines three methods that a connection pool must implement: Get(), Put(), and Close().
-
-cpool struct:
-
-Holds a slice of database connections (conns []*sql.DB).
-A channel to manage the availability of connections (size-limited channel).
-A mutex (mu sync.Mutex) to ensure thread-safe access to the pool.
+	Imports
+		"database/sql": Provides SQL database access.
+		"fmt": Used for formatted I/O operations.
+		"sync": Provides concurrency features like wait groups and mutexes.
+		"time": Used for benchmarking.
+		"_ github.com/go-sql-driver/mysql": The MySQL driver is imported for database operations.
+	Connection Pool Interface and Structure
+		ConnectionPool interface: Defines three methods that a connection pool must implement: Get(), Put(), and Close().
+			cpool struct:
+				Holds a slice of database connections (conns []*sql.DB).
+				A channel to manage the availability of connections (size-limited channel).
+				A mutex (mu sync.Mutex) to ensure thread-safe access to the pool.
+		
 Database Connection Pool Functions
-NewPool(size int)
-
-Creates a new connection pool with a given size.
-Initializes a pool by creating size number of connections and adds them to the conns slice.
-Adds a signal to the channel to indicate that a connection is available.
-Get()
-
-Acquires a connection from the pool.
-Waits for availability by consuming from the channel.
-Locks the conns slice to safely remove and return the first connection in the slice.
-*Put(conn sql.DB)
-
-Returns a connection to the pool.
-Locks the conns slice to safely append the connection back.
-Signals availability by sending to the channel.
-Close()
-
-Closes all database connections and empties the pool.
-createNewConnection()
-
-Establishes a new MySQL database connection using the provided Data Source Name (DSN).
-Pings the database to ensure the connection is valid.
-simulateDatabaseOperation()
-
-Executes a dummy SQL query (SELECT SLEEP(0.01);) to simulate a small database operation.
-Benchmark Functions
+	NewPool(size int)
+		Creates a new connection pool with a given size.
+		Initializes a pool by creating size number of connections and adds them to the conns slice.
+		Adds a signal to the channel to indicate that a connection is available.
+	
+	Get()
+		Acquires a connection from the pool.
+		Waits for availability by consuming from the channel.
+		Locks the conns slice to safely remove and return the first connection in the slice.
+	
+	*Put(conn sql.DB)
+		Returns a connection to the pool.
+		Locks the conns slice to safely append the connection back.
+		Signals availability by sending to the channel.
+	
+	Close()
+		Closes all database connections and empties the pool.
+	
+	createNewConnection()
+		Establishes a new MySQL database connection using the provided Data Source Name (DSN).
+		Pings the database to ensure the connection is valid.
+	
+	simulateDatabaseOperation()
+		Executes a dummy SQL query (SELECT SLEEP(0.01);) to simulate a small database operation.
+		Benchmark Functions
+	
 BenchmarkNonPool(nThreads int)
 
 Simulates database operations without using a connection pool.
