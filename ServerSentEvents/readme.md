@@ -102,3 +102,5 @@ If a client disconnects, the server handles it gracefully by unregistering the c
 
 This Go-based SSE server demonstrates how to efficiently broadcast real-time updates to multiple clients. It can be extended for various real-time use cases, such as live data feeds, notifications, or monitoring dashboards.
 
+## References
+    https://thoughtbot.com/blog/writing-a-server-sent-events-server-in-go
