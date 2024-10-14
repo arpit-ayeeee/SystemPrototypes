@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Sent Events</title>
+    <style>
+        .title {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .box {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            font-family: monospace;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Server Sent Events</h1>
+    <div id="data" class="box">
+        Waiting for server-sent events...
+    </div>
+    <script>
+        console.log("here");
+
+        let eventSource = new EventSource("http://localhost:3000/");
+
+        eventSource.onmessage = function (msg) {
+            console.log(msg);
+            document.getElementById("data").innerHTML += "<p>" + msg.data + "</p>";
+        };
+
+        eventSource.onerror = function (err) {
+            console.error("EventSource failed: ", err);
+            document.getElementById("data").innerHTML = "Error: Unable to receive events.";
+        };
+    </script>
+</body>
+</html>
