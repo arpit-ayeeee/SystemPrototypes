@@ -120,6 +120,8 @@ func main() {
 
 	broker := NewServer()
 
+	log.Println(broker)
+
 	go func() {
 		for {
 			time.Sleep(time.Second * 2)
