@@ -7,9 +7,6 @@ import (
 	"time"
 )
 
-// Example SSE server in Golang.
-//     $ go run sse.go
-
 type Broker struct {
 
 	// Events are pushed to this channel by the main events-gathering routine
