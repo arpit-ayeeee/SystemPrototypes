@@ -109,7 +109,7 @@ This alternative implementation uses Express.js to handle HTTP requests and WebS
 - **http**: The default Node.js HTTP module for creating the HTTP server.
 - **express (optional)**: If you want to use the Express.js version of the WebSocket server.
 
-## Perosnal Notes
+## Personal Notes
 
 - Not using SocketIO, because it's harder to support multiple platforms in it(Android, IOS, Rust). We need to do socketIO implementation in Android as well as Rust.
 
