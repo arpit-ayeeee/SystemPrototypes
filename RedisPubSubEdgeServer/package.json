@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node serverx.js"
+    "startx": "node serverx.js",
+    "starty": "node servery.js",
+    "startz": "node serverz.js"
   },
   "keywords": [],
   "author": "",
