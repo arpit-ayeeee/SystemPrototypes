@@ -11,9 +11,9 @@ import (
 )
 
 const (
-	dbUser     = ""
-	dbPassword = ""
-	dbName     = ""
+	dbUser     = "root"
+	dbPassword = "Root@123"
+	dbName     = "airlineCheckin"
 )
 
 func main() {
