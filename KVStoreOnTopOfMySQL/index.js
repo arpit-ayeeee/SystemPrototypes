@@ -30,7 +30,7 @@ app.delete('/deleteData/:id', jsonParser, kvController.deleteData);
 
 
 // Schedule the stored procedure to run every ten minutes
-cron.schedule('* * * * *', () => {
+cron.schedule('10 * * * *', () => {
     console.log('Executing TTL');
     implementTimeToLeave();
 }, {
